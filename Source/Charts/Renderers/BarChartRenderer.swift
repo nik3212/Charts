@@ -821,11 +821,37 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 let bezierPath = UIBezierPath(roundedRect: barRect, cornerRadius: set.cornerRadius)
                 context.addPath(bezierPath.cgPath)
 
+                let pt = trans.pixelForValues(x: e.x, y: e.y)
+
+                drawHighlightLines(context: context, point: pt, set: set)
+
                 context.drawPath(using: .fill)
             }
         }
         
         context.restoreGState()
+    }
+
+    internal func drawHighlightLines(context: CGContext, point: CGPoint, set: IBarChartDataSet)
+    {
+        
+        // draw vertical highlight lines
+        if set.isVerticalHighlightIndicatorEnabled
+        {
+            context.beginPath()
+            context.move(to: CGPoint(x: point.x, y: viewPortHandler.contentTop))
+            context.addLine(to: CGPoint(x: point.x, y: viewPortHandler.contentBottom))
+            context.strokePath()
+        }
+        
+        // draw horizontal highlight lines
+        if set.isHorizontalHighlightIndicatorEnabled
+        {
+            context.beginPath()
+            context.move(to: CGPoint(x: viewPortHandler.contentLeft, y: point.y))
+            context.addLine(to: CGPoint(x: viewPortHandler.contentRight, y: point.y))
+            context.strokePath()
+        }
     }
 
     /// Sets the drawing position of the highlight object based on the given bar-rect.

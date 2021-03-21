@@ -41,4 +41,8 @@ public protocol IBarChartDataSet: IBarLineScatterCandleBubbleChartDataSet
     var stackLabels: [String] { get set }
 
     var cornerRadius: CGFloat { get set }
+
+    var isVerticalHighlightIndicatorEnabled: Bool { get set }
+
+    var isHorizontalHighlightIndicatorEnabled: Bool { get set }
 }

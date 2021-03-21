@@ -151,6 +151,10 @@ open class BarChartDataSet: BarLineScatterCandleBubbleChartDataSet, IBarChartDat
 
     open var cornerRadius: CGFloat = 0.0
 
+    open var isVerticalHighlightIndicatorEnabled: Bool = false
+
+    open var isHorizontalHighlightIndicatorEnabled: Bool = false
+
     // MARK: - NSCopying
     
     open override func copy(with zone: NSZone? = nil) -> Any
@@ -165,6 +169,8 @@ open class BarChartDataSet: BarLineScatterCandleBubbleChartDataSet, IBarChartDat
         copy.barBorderColor = barBorderColor
         copy.highlightAlpha = highlightAlpha
         copy.cornerRadius = cornerRadius
+        copy.isVerticalHighlightIndicatorEnabled = isVerticalHighlightIndicatorEnabled
+        copy.isHorizontalHighlightIndicatorEnabled = isHorizontalHighlightIndicatorEnabled
         return copy
     }
 }
