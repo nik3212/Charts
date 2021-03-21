@@ -823,6 +823,9 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
 
                 let pt = trans.pixelForValues(x: e.x, y: e.y)
 
+                context.setStrokeColor(set.highlightColor.cgColor)
+                context.setLineWidth(set.highlightLineWidth)
+
                 drawHighlightLines(context: context, point: pt, set: set)
 
                 context.drawPath(using: .fill)
